@@ -1,6 +1,13 @@
 
+MODE = release
+ifeq ($(MODE),debug)
+        CFLAG = -g
+else
+        CFLAG = -O3
+endif
+
 msgpc: msgpc.c predir
-	gcc -o bin/msgpc msgpc.c
+	gcc -o bin/msgpc $(CFLAG) msgpc.c
 
 .PHONY: clean predir
 
